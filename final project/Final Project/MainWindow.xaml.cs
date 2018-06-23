@@ -42,7 +42,11 @@ namespace Final_Project
         {
             if (this.WindowState == WindowState.Maximized)
             {
-                this.WindowState = WindowState.Normal;
+                this.WindowState = WindowState.Normal; //设置窗口还原
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized; //设置窗口最大化
             }
         }
 

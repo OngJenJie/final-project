@@ -26,17 +26,45 @@
 
         <Grid Grid.Row="1" VerticalAlignment="Center"  Background="Transparent">
             <Rectangle Fill="#080808" Height="200"></Rectangle>
-            <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" Margin="0 40">00:00</TextBlock>
-            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 45">
+                <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" Width="80" x:Name="MinCount">00</TextBlock>
+            <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" >:</TextBlock>
+            <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" x:Name="SecCount" >00</TextBlock>
+            </StackPanel>
+
         </Grid>
 
-        <StackPanel Grid.Row="2" Background="#F0F0F0">
-            
-        </StackPanel>
+        <Grid Grid.Row="2">
+            <StackPanel Grid.Row="2" Background="Gray" Orientation="Vertical">
+                <TextBlock Margin="0 20 0 5" HorizontalAlignment="Center" FontWeight="Black"> Minutes</TextBlock>
+                <Grid>
+                <Canvas Height="20" Margin="10">
+                    <Border CornerRadius="10" Background="White" >
+                        <TextBlock x:Name="MinNum" Width="30" Height="20" FontSize="14" FontWeight="Black" TextAlignment="Center">1</TextBlock>
+                    </Border>
+                </Canvas>
+            </Grid>
+            <Slider Margin="10 0" Minimum="0" Maximum="60" x:Name="MinSlider" ValueChanged="MinSlider_ValueChanged" IsMoveToPointEnabled="True"></Slider>
 
-        <StackPanel Grid.Row="3" Background="#252525" Orientation="Horizontal" >
+                <TextBlock Margin="0 20 0 5" HorizontalAlignment="Center" FontWeight="Black"> Seconds
+                </TextBlock>
+
+                <Grid>
+                    <Canvas Height="20" Margin="10">
+                        <Border CornerRadius="10" Background="White">
+                            <TextBlock x:Name="MaxNum" Width="30" Height="20" FontSize="14" FontWeight="Black" TextAlignment="Center">1</TextBlock>
+                        </Border>
+                    </Canvas>
+                </Grid>
+                <Slider Margin="10 0" Minimum="0" Maximum="60" x:Name="MaxSlider" ValueChanged="MaxSlider_ValueChanged" IsMoveToPointEnabled="True"></Slider>
+
+                
+            </StackPanel>
+        </Grid>
+
+    <StackPanel Grid.Row="3" Background="#252525" Orientation="Horizontal" >
             <StackPanel HorizontalAlignment="Left">
-                <Button HorizontalAlignment="Left">
+                <Button HorizontalAlignment="Left" x:Name="StartButton" Click="StartButton_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
@@ -54,7 +82,7 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Center" Margin="55 0 0 0" Height="50" Width="70">
-                <Button HorizontalAlignment="Center" >
+                <Button HorizontalAlignment="Center" x:Name="PauseButton" Click="PauseButton_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
@@ -69,12 +97,13 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" Margin="55 0 0 0" Width="80" Height="50">
-                <Button HorizontalAlignment="Center">
+                <Button HorizontalAlignment="Center" x:Name="StopButton" Click="StopButton_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
                             <Border BorderThickness="0" Height="50" Width="70" Margin="0 0 0 0" BorderBrush="Red" Background="#FF1B1B" CornerRadius="15">
-                                <Rectangle Width="20" Height="20" Fill="White" ></Rectangle>
+                                    <Rectangle Width="20" Height="20" Fill="White" >
+                                    </Rectangle>
                             </Border>
                         </Grid>
                     </ControlTemplate>

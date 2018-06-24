@@ -73,11 +73,27 @@ namespace Final_Project
         private void MinSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+            // number
+                double value = Math.Round(MinSlider.Value, 0);
+                MinNum.Text = value.ToString();
+
+            // position
+            double v = (value / 60) * 310;
+            Canvas.SetLeft(Min, v);
+
         }
 
-        private void MaxSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+
+        private void SecSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            // number
+            double value = Math.Round(SecSlider.Value, 0);
+            SecNum.Text = value.ToString();
 
+            // position
+            double v = (value / 60) * 310;
+            Canvas.SetLeft(Sec, v);
         }
+
     }
 }

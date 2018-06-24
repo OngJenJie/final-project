@@ -38,8 +38,8 @@
             <StackPanel Grid.Row="2" Background="Gray" Orientation="Vertical">
                 <TextBlock Margin="0 20 0 5" HorizontalAlignment="Center" FontWeight="Black"> Minutes</TextBlock>
                 <Grid>
-                <Canvas Height="20" Margin="10">
-                    <Border CornerRadius="10" Background="White" >
+                <Canvas Height="20" Margin="10" x:Name="Min_Canvas" Width="340">
+                    <Border CornerRadius="10" Background="White" x:Name="Min" Width="30">
                         <TextBlock x:Name="MinNum" Width="30" Height="20" FontSize="14" FontWeight="Black" TextAlignment="Center">1</TextBlock>
                     </Border>
                 </Canvas>
@@ -50,13 +50,13 @@
                 </TextBlock>
 
                 <Grid>
-                    <Canvas Height="20" Margin="10">
-                        <Border CornerRadius="10" Background="White">
-                            <TextBlock x:Name="MaxNum" Width="30" Height="20" FontSize="14" FontWeight="Black" TextAlignment="Center">1</TextBlock>
+                    <Canvas Height="20" Margin="10" x:Name="Sec_Canvas" Width="340">
+                        <Border CornerRadius="10" Background="White" x:Name="Sec" Width="30">
+                            <TextBlock x:Name="SecNum" Width="30" Height="20" FontSize="14" FontWeight="Black" TextAlignment="Center">1</TextBlock>
                         </Border>
                     </Canvas>
                 </Grid>
-                <Slider Margin="10 0" Minimum="0" Maximum="60" x:Name="MaxSlider" ValueChanged="MaxSlider_ValueChanged" IsMoveToPointEnabled="True"></Slider>
+                <Slider Margin="10 0" Minimum="0" Maximum="60" x:Name="SecSlider" ValueChanged="SecSlider_ValueChanged" IsMoveToPointEnabled="True"></Slider>
 
                 
             </StackPanel>

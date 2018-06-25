@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace Final_Project
 {
@@ -25,7 +26,7 @@ namespace Final_Project
             InitializeComponent();
         }
 
-        private void TitleBar_MouseMove(object sender, MouseEventArgs e)
+        private void TitleBar_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -76,6 +77,7 @@ namespace Final_Project
             // number
                 double value = Math.Round(MinSlider.Value, 0);
                 MinNum.Text = value.ToString();
+            MinCount.Text = value.ToString();
 
             // position
             double v = (value / 60) * 310;
@@ -92,7 +94,8 @@ namespace Final_Project
 
             // position
             double v = (value / 60) * 310;
-            Canvas.SetLeft(Sec, v);
+            Canvas.SetLeft(Sec , v);
+            SecCount.Text = value.ToString();
         }
 
     }

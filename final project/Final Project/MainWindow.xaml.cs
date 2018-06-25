@@ -69,8 +69,8 @@ namespace Final_Project
         {
             if (TimeSec > -1)
             {
-                MinCount.Text = TimeMin.ToString();
-                SecCount.Text = TimeSec.ToString();
+                MinCount.Text = TimeMin.ToString("00");
+                SecCount.Text = TimeSec.ToString("00");
 
                 if (TimeSec > -1)
                 {
@@ -87,7 +87,7 @@ namespace Final_Project
             else if (SecCount.Text == "0")
             {
                 Timer.Stop();
-                System.Windows.Forms.MessageBox.Show("Stop!");
+                System.Windows.Forms.MessageBox.Show("Time Up !!!");
                 ClickCount = 0;
             }
         }

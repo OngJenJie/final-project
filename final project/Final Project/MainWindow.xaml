@@ -28,7 +28,7 @@
             <Rectangle Fill="#080808" Height="200"></Rectangle>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 45">
                 <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" Width="80" x:Name="MinCount">00</TextBlock>
-            <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" >:</TextBlock>
+            <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" x:Name="midCount">:</TextBlock>
             <TextBlock Foreground="White" TextAlignment="Center" FontSize="72" x:Name="SecCount" >00</TextBlock>
             </StackPanel>
 

@@ -21,6 +21,12 @@ namespace Final_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Timer Timer;
+        int TimeSec ,TimeMin, m , s; 
+        double MinValue;
+        double SecValue;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,9 +62,47 @@ namespace Final_Project
             this.Close();
         }
 
-        private void StartButton_Click(object sender, RoutedEventArgs e)
+        //倒數計時
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if (TimeSec > -1)
+            {
+                MinCount.Text = TimeMin.ToString();
+                SecCount.Text = TimeSec.ToString();
+
+                if (TimeSec > -1)
+                {
+                    TimeSec--;
+                    if (TimeSec == 0)
+                    {
+                        TimeMin--;
+                        TimeSec = 60;
+                    }
+                }
+                
+                
+            }
+            else if (SecCount.Text == "0")
+            {
+                Timer.Stop();
+                System.Windows.Forms.MessageBox.Show("Stop!");
+            }
+        }
+
+        void timer1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            TimeMin = int.Parse(MinValue.ToString());
+            TimeSec =int.Parse (SecValue.ToString());
+            Timer = new Timer();
+
+            Timer.Interval = 1000;
+            Timer.Tick += new EventHandler(timer_Tick);
+            Timer.Start();
         }
 
         private void PauseButton_Click(object sender, RoutedEventArgs e)
@@ -75,12 +119,12 @@ namespace Final_Project
         {
 
             // number
-                double value = Math.Round(MinSlider.Value, 0);
-                MinNum.Text = value.ToString();
-            MinCount.Text = value.ToString();
+                MinValue = Math.Round(MinSlider.Value, 0);
+                MinNum.Text = MinValue.ToString();
+            MinCount.Text = MinValue.ToString();
 
             // position
-            double v = (value / 60) * 310;
+            double v = (MinValue / 60) * 310;
             Canvas.SetLeft(Min, v);
 
         }
@@ -89,13 +133,13 @@ namespace Final_Project
         private void SecSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             // number
-            double value = Math.Round(SecSlider.Value, 0);
-            SecNum.Text = value.ToString();
+            SecValue = Math.Round(SecSlider.Value, 0);
+            SecNum.Text = SecValue.ToString();
+            SecCount.Text = SecValue.ToString();
 
             // position
-            double v = (value / 60) * 310;
+            double v = (SecValue / 60) * 310;
             Canvas.SetLeft(Sec , v);
-            SecCount.Text = value.ToString();
         }
 
     }

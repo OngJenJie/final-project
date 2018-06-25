@@ -23,9 +23,11 @@ namespace Final_Project
     {
 
         Timer Timer;
-        int TimeSec ,TimeMin, m , s; 
+        int TimeSec ,TimeMin;
+        int ClickCount = 0;
         double MinValue;
         double SecValue;
+        string pauseMin, pauseSec;
 
         public MainWindow()
         {
@@ -86,33 +88,57 @@ namespace Final_Project
             {
                 Timer.Stop();
                 System.Windows.Forms.MessageBox.Show("Stop!");
+                ClickCount = 0;
             }
-        }
-
-        void timer1_Tick(object sender, EventArgs e)
-        {
-
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            TimeMin = int.Parse(MinValue.ToString());
-            TimeSec =int.Parse (SecValue.ToString());
-            Timer = new Timer();
+            if(ClickCount == 1)
+            {
+                StartButton.IsEnabled = false;
+            }
+            if(ClickCount == 0)
+            {
+                StartButton.IsEnabled = true;
+                TimeMin = int.Parse(MinValue.ToString());
+                TimeSec = int.Parse(SecValue.ToString());
+                Timer = new Timer();
 
-            Timer.Interval = 1000;
-            Timer.Tick += new EventHandler(timer_Tick);
-            Timer.Start();
+                Timer.Interval = 1000;
+                Timer.Tick += new EventHandler(timer_Tick);
+                Timer.Start();
+
+                ClickCount = 1;
+            }
+            if(ClickCount == 2)
+            {
+                Timer.Start();
+                TimeMin = int.Parse(pauseMin);
+                TimeSec = int.Parse(pauseSec);
+
+            }
+
+
         }
 
         private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Timer.Stop();
+            pauseMin = MinCount.Text;
+            pauseSec = SecCount.Text;
+            ClickCount = 2;
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
+            Timer.Stop();
+            SecSlider.Value = 0;
+            MinSlider.Value = 0;
+            MinCount.Text = "00";
+            SecCount.Text = "00";
 
+            ClickCount = 0;
         }
 
         private void MinSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
